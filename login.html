@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - GameCrate</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+    .form-control {
+      background-color: #1f1f1f;
+      color: white;
+      border: 1px solid #444;
+    }
+    .form-control:focus {
+      background-color: #262626;
+      color: white;
+    }
+    .btn-login {
+      background: linear-gradient(90deg, #00ffe0, #007bff);
+      border: none;
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5" style="max-width: 400px;">
+    <h2 class="mb-4 text-center">Login to GameCrate</h2>
+    <form onsubmit="handleLogin(event)">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-login w-100">Login</button>
+      <p class="mt-3 text-center">Don't have an account? <a href="register.html" class="text-info">Register here</a></p>
+    </form>
+  </div>
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const stored = JSON.parse(localStorage.getItem("users")) || [];
+      const found = stored.find(u => u.username === username && u.password === password);
+      if (found) {
+        alert("Login successful!");
+        window.location.href = "index.html";
+      } else {
+        alert("Invalid username or password");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Store - GameCrate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      background-color: #111;
+      position: relative;
+    }
+
+    /* Background video styling */
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background-color: rgba(0,0,0,0.8);
+      border: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    .card img {
+      border-radius: 5px;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .game-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #f0f0f0;
+    }
+
+    .search-info {
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    footer {
+      margin-top: 40px;
+      background-color: #000;
+      padding: 40px 20px;
+      color: #bbb;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .search-bar input {
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background Video -->
+<video autoplay muted loop id="bgVideo">
+  <source src="images/trailer.mp4" type="video/mp4">
+</video>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 sticky-top">
+  <a class="navbar-brand" href="index.html">
+    <img src="images/logo.png" width="40" class="me-2"> GameCrate
+  </a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a href="store.html" class="nav-link">Store</a></li>
+      <li class="nav-item"><a href="news.html" class="nav-link">News</a></li>
+      <li class="nav-item"><a href="category.html" class="nav-link">Categories</a></li>
+      <li class="nav-item"><a href="community.html" class="nav-link">Community</a></li>
+      <li class="nav-item"><a href="support.html" class="nav-link">Support</a></li>
+    </ul>
+    <form class="d-flex me-3" action="store.html" method="get">
+      <input name="search" class="form-control form-control-sm me-2" type="search" placeholder="Search..." />
+      <button class="btn btn-outline-light btn-sm">Search</button>
+    </form>
+    <a href="cart.html" class="btn btn-outline-light btn-sm me-2">Cart</a>
+    <a href="login.html" class="btn btn-outline-light btn-sm me-2">Login</a>
+    <a href="register.html" class="btn btn-light btn-sm">Register</a>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <h2 class="mb-4">Game Store</h2>
+  <div id="searchInfo" class="search-info mb-3"></div>
+  <div class="row" id="gameList">
+    <!-- Cards inserted by JS -->
+  </div>
+</div>
+
+<footer>
+  <div class="container d-flex justify-content-between flex-wrap">
+    <div>
+      <h5>About GameCrate</h5>
+      <p>Your one-stop platform for exploring and purchasing top-tier PC and console games.</p>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <ul class="list-unstyled">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="library.html">Your Library</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <p>Email: support@gamecrate.com<br>Navi Mumbai, India</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const games = [
+  { name: "Marvel's Spider-Man 2", file: "games/spiderman2.html", img: "marvels-spider-man-3840x2160-11609.jpeg", desc: "Swing into action with Peter and Miles." },
+  { name: "Batman: Arkham Knight", file: "games/batmanarkham.html", img: "batman-arkham-3840x2160-18914.jpeg", desc: "Be the Dark Knight and save Gotham." },
+  { name: "Elden Ring", file: "games/eldenring.html", img: "eldenring.jpg", desc: "Explore the epic Lands Between." },
+  { name: "Warhammer 40K: Space Marine", file: "games/spacemarine.html", img: "spacemarine.jpg", desc: "Crush the enemies of mankind." },
+  { name: "Grand Theft Auto V", file: "games/gtav.html", img: "grand-theft-auto-v-3840x2160-10738.jpg", desc: "Crime and chaos in Los Santos." },
+  { name: "Call of Duty: Modern Warfare II", file: "games/mw2.html", img: "call-of-duty-modern-warfare-2-2022-games-call-of-duty-3840x2160-8580.jpg", desc: "Tactical warfare redefined." },
+  { name: "Red Dead Redemption 2", file: "games/reddead2.html", img: "red-dead-redemption-3840x2160-10632.jpeg", desc: "Outlaws in a fading wild west." },
+  { name: "Once Human", file: "games/oncehuman.html", img: "oncehuman.jpg", desc: "Survive a post-apocalyptic alien Earth." },
+  { name: "Resident Evil Village", file: "games/residentevilvillage.html", img: "resident-evil-village-resident-evil-8-playstation-5-xbox-3840x2160-1488.jpg", desc: "Horror and survival in a cursed village." },
+  { name: "God of War: Ragnarok", file: "games/gowragnarok.html", img: "god-of-war-ragnarok-kratos-freya-atreus-2022-games-3840x2160-8677.jpg", desc: "Face Ragnarok with Kratos and Atreus." },
+  { name: "Tekken 8", file: "games/tekken8.html", img: "tekken8.jpg", desc: "The ultimate clash of fighters begins." },
+  { name: "DOOM: The Dark Ages", file: "games/doomdarkages.html", img: "doom-the-dark-ages-3840x2160-20800.jpg", desc: "Slay demons in a medieval hellscape." },
+  { name: "Assassin's Creed Shadows", file: "games/assassinscreedshadows.html", img: "assassins-creed-3840x2160-16781.jpg", desc: "Shinobi stealth meets samurai strength." },
+  { name: "Cyberpunk 2077", file: "games/cyberpunk.html", img: "cyberpunk.jpg", desc: "High-tech meets low-life in Night City." },
+  { name: "Star Wars Jedi: Survivor", file: "games/swjedisurvivor.html", img: "swjedisurvivor.jpg", desc: "Cal Kestis returns against the Empire." },
+  { name: "The Witcher 3: Wild Hunt", file: "games/witcher3.html", img: "witcher3.jpg", desc: "Geralt's quest through monster-haunted lands." },
+  { name: "Far Cry 6", file: "games/farcry6.html", img: "farcry6.jpg", desc: "Lead a revolution in a tropical dystopia." },
+  { name: "Alan Wake 2", file: "games/alanwake2.html", img: "alanwake2.jpg", desc: "Darkness returns in a twisted thriller." },
+  { name: "Hogwarts Legacy", file: "games/hogwarts.html", img: "hogwarts.jpg", desc: "Live your magical legacy at Hogwarts." },
+  { name: "Dead Space Remake", file: "games/deadspace.html", img: "deadspace.jpg", desc: "Terror in the void returns." },
+  { name: "Mortal Kombat 1", file: "games/mk1.html", img: "mk1.jpg", desc: "Fight in a reimagined universe." },
+  { name: "Baldur's Gate 3", file: "games/bg3.html", img: "bg3.jpg", desc: "Epic fantasy meets tactical RPG." },
+  { name: "The Last of Us Part I", file: "games/lastofus1.html", img: "lastofus1.jpg", desc: "Endure and survive a broken world." },
+  { name: "Space Marine 2", file: "games/spacemarine2.html", img: "spacemarine2.jpg", desc: "Return to the battlefield with vengeance." }
+];
+
+
+const query = new URLSearchParams(window.location.search);
+const searchTerm = query.get("search")?.toLowerCase() || "";
+const gameList = document.getElementById("gameList");
+
+let found = 0;
+games.forEach(game => {
+  if (game.name.toLowerCase().includes(searchTerm)) {
+    found++;
+    const col = document.createElement("div");
+    col.className = "col-md-3 mb-4";
+    col.innerHTML = `
+      <div class="card h-100">
+        <a href="${game.file}">
+          <img src="images/${game.img}" class="card-img-top" alt="${game.name}">
+        </a>
+        <div class="card-body">
+          <p class="game-title">${game.name}</p>
+          <a href="${game.file}" class="btn btn-sm btn-light">View Game</a>
+        </div>
+      </div>
+    `;
+    gameList.appendChild(col);
+  }
+});
+
+document.getElementById("searchInfo").textContent = searchTerm
+  ? `Showing results for: "${searchTerm}" (${found} found)`
+  : "Showing all games";
+</script>
+
+</body>
+</html>

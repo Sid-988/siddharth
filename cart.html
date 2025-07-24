@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Cart - GameCrate</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+    .table-dark th, .table-dark td {
+      background-color: #1f1f1f;
+    }
+    .table thead th {
+      border-bottom: 2px solid #444;
+    }
+    .btn-checkout {
+      background: linear-gradient(90deg, #00ffe0, #007bff);
+      border: none;
+      color: #000;
+      font-weight: bold;
+      padding: 10px 25px;
+      transition: 0.3s ease;
+    }
+    .btn-checkout:hover {
+      background: linear-gradient(90deg, #007bff, #00ffe0);
+      color: #000;
+    }
+    .table td img {
+      width: 60px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="mb-4">🛒 Your Shopping Cart</h2>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Game</th>
+          <th scope="col">Price</th>
+          <th scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items"></tbody>
+    </table>
+    <div class="mt-4">
+      <h5>Subtotal: ₹<span id="subtotal">0</span></h5>
+      <h6>GST (18%): ₹<span id="gst">0</span></h6>
+      <h4>Total: ₹<span id="grand-total">0</span></h4>
+    </div>
+    <a href="checkout.html" class="btn btn-checkout mt-3">Proceed to Checkout</a>
+  </div>
+
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const table = document.getElementById("cart-items");
+    let subtotal = 0;
+
+    cartItems.forEach((item, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td><img src="${item.image}" class="me-2">${item.name}</td>
+        <td>₹${item.price}</td>
+        <td><button class="btn btn-sm btn-danger" onclick="removeItem(${index})">Remove</button></td>
+      `;
+      table.appendChild(row);
+      subtotal += item.price;
+    });
+
+    const gst = subtotal * 0.18;
+    const total = subtotal + gst;
+
+    document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+    document.getElementById("gst").textContent = gst.toFixed(2);
+    document.getElementById("grand-total").textContent = total.toFixed(2);
+
+    function removeItem(index) {
+      cartItems.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      location.reload();
+    }
+  </script>
+</body>
+</html>

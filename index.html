@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GameCrate – Discover. Play. Own.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, #00ffe0, #007bff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .navbar {
+      background-color: #1b1b1b;
+    }
+
+    .navbar-brand {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+    }
+
+    .carousel-item img {
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .carousel-item:hover img {
+      transform: scale(1.02);
+    }
+
+    .category-slide img, .offer-slide img {
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .category-slide img:hover, .offer-slide img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    }
+
+    .footer {
+      background-color: #0d0d0d;
+      padding: 40px 20px;
+      color: #bbb;
+    }
+
+    .footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: white;
+    }
+
+    .btn-glow {
+      background-color: #007bff;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .btn-glow:hover {
+      background-color: #00ffe0;
+      color: #000;
+      box-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0;
+    }
+
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background Video -->
+<video autoplay muted loop id="bgVideo">
+  <source src="images/trailer.mp4" type="video/mp4">
+</video>
+
+<!-- Optional Overlay -->
+<div style="position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:-1;"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark px-4 sticky-top">
+  <a class="navbar-brand" href="#">
+    <img src="images/LOGO DESIGN_ GAMECRATE BRAND.png" width="40" class="me-2"> GameCrate
+  </a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a href="store.html" class="nav-link">Store</a></li>
+      <li class="nav-item"><a href="community.html" class="nav-link">Community</a></li>
+      <li class="nav-item"><a href="news.html" class="nav-link">News</a></li>
+      <li class="nav-item"><a href="support.html" class="nav-link">Support</a></li>
+    </ul>
+    <form class="d-flex me-3">
+      <input id="searchInput" class="form-control form-control-sm me-2" type="search" placeholder="Search..." />
+      <button class="btn btn-outline-light btn-sm">Search</button>
+    </form>
+    <a href="login.html" class="btn btn-outline-light btn-sm me-2">Login</a>
+    <a href="register.html" class="btn btn-light btn-sm">Register</a>
+  </div>
+</nav>
+
+
+<!-- Main Banner Carousel -->
+<div class="container mt-4">
+  <div id="mainBanner" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner rounded">
+      <div class="carousel-item active">
+        <img src="images/batman-arkham-3840x2160-18914.jpeg" class="d-block w-100" alt="Banner 1">
+      </div>
+      <div class="carousel-item">
+        <img src="images/marvels-spider-man-3840x2160-11609.jpeg" class="d-block w-100" alt="Banner 2">
+      </div>
+      <div class="carousel-item">
+        <img src="images/doom-the-dark-ages-3840x2160-20800.jpg" class="d-block w-100" alt="Banner 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainBanner" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainBanner" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Categories -->
+  <h2 class="mt-5">Browse by Category</h2>
+  <div class="row category-slide g-3">
+    <div class="col-6 col-md-2"><a href="category.html"><img src="images/cat-freetoplay.png" class="w-100" alt="Free to Play"></a></div>
+    <div class="col-6 col-md-2"><a href="category.html"><img src="images/cat-racing.png" class="w-100" alt="Racing"></a></div>
+    <div class="col-6 col-md-2"><a href="category.html"><img src="images/cat-horror.png" class="w-100" alt="Horror"></a></div>
+    <div class="col-6 col-md-2"><a href="category.html"><img src="images/cat-visual.png" class="w-100" alt="Visual Novel"></a></div>
+    <div class="col-6 col-md-2"><a href="category.html"><img src="images/cat-openworld.png" class="w-100" alt="Open World"></a></div>
+    <div class="col-6 col-md-2"><a href="category.html"><img src="images/cat-rpg.png" class="w-100" alt="RPG"></a></div>
+  </div>
+
+  <!-- Featured & Recommended -->
+  <h2 class="mt-5">Featured & Recommended</h2>
+  <div class="row g-3 offer-slide">
+    <div class="col-6 col-md-3">
+      <a href="games/spiderman2.html"><img src="images/marvels-spider-man-3840x2160-11609.jpeg" class="w-100" alt="Spider-Man 2"></a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="games/eldenring.html"><img src="images/elden-ring-2022-games-pc-games-playstation-4-xbox-series-x-3840x2160-7474.jpg" class="w-100" alt="Elden Ring"></a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="games/gtav.html"><img src="images/grand-theft-auto-v-3840x2160-10738.jpg" class="w-100" alt="GTA V"></a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="games/doomdarkages.html"><img src="images/doom-the-dark-ages-3840x2160-20800.jpg" class="w-100" alt="DOOM Dark Ages"></a>
+    </div>
+  </div>
+
+  <!-- Special Offers -->
+  <h2 class="mt-5">Special Offers</h2>
+  <div class="row g-3 offer-slide">
+    <div class="col-6 col-md-3">
+      <a href="games/tekken8.html"><img src="images/tekken8.jpg" class="w-100" alt="Tekken 8"></a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="games/spacemarine2.html"><img src="images/spacemarine2.jpg" class="w-100" alt="Space Marine 2"></a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="games/oncehuman.html"><img src="images/oncehuman.jpg" class="w-100" alt="Once Human"></a>
+    </div>
+    <div class="col-6 col-md-3">
+      <a href="games/reddead2.html"><img src="images/rdr2.jpg" class="w-100" alt="Red Dead Redemption 2"></a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <div>
+      <h5>About GameCrate</h5>
+      <p>GameCrate is your ultimate destination for digital games, trailers, reviews, and exclusive sales.</p>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <ul class="list-unstyled">
+        <li><a href="yourpage.html">Your Page</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="library.html">Library</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <p>Email: support@gamecrate.com<br>Navi Mumbai, India</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.querySelector('.navbar form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const query = document.getElementById('searchInput').value.trim();
+    if (query !== '') {
+      window.location.href = `store.html?search=${encodeURIComponent(query)}`;
+    }
+  });
+</script>
+
+</body>
+</html>

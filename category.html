@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Categories - GameCrate</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+
+    .category-card {
+      background-color: #1f1f1f;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+
+    .category-card:hover {
+      background-color: #2a2a2a;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    .category-card h5 {
+      color: #fff;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      background-color: #111;
+      color: #bbb;
+      padding: 40px 20px;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark bg-opacity-75 px-4">
+  <a class="navbar-brand" href="index.html">
+    <img src="images/logo.png" alt="GameCrate" width="40" height="40" class="me-2"> GameCrate
+  </a>
+  <form class="d-flex me-3" action="search.html" method="GET">
+    <input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search games..." />
+    <button class="btn btn-outline-light btn-sm">Search</button>
+  </form>
+  <div class="d-flex align-items-center">
+    <select class="form-select form-select-sm me-3">
+      <option value="INR">₹ INR</option>
+      <option value="USD">$ USD</option>
+    </select>
+    <a href="cart.html" class="btn btn-outline-light me-2">Cart</a>
+    <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+    <a href="register.html" class="btn btn-light">Register</a>
+  </div>
+</nav>
+
+<!-- Category Section -->
+<div class="container my-5">
+  <h2 class="mb-4">Browse by Genre</h2>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <a href="action.html" class="text-decoration-none">
+        <div class="category-card">
+          <img src="images/cat-action.png" alt="Action Games">
+          <h5>Action</h5>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="rpg.html" class="text-decoration-none">
+        <div class="category-card">
+          <img src="images/cat-rpg.png" alt="RPG Games">
+          <h5>RPG</h5>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="horror.html" class="text-decoration-none">
+        <div class="category-card">
+          <img src="images/cat-horror.png" alt="Horror Games">
+          <h5>Horror</h5>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="fps.html" class="text-decoration-none">
+        <div class="category-card">
+          <img src="images/cat-fps.png" alt="FPS Games">
+          <h5>First Person Shooter</h5>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4">
+      <a href="openworld.html" class="text-decoration-none">
+        <div class="category-card">
+          <img src="images/cat-openworld.png" alt="Open World Games">
+          <h5>Open World</h5>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <div>
+      <h5>About GameCrate</h5>
+      <p>Discover games by genre and explore titles tailored to your gaming style.</p>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <ul class="list-unstyled">
+        <li><a href="yourpage.html">Your Page</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <p>Email: support@gamecrate.com<br>Location: Navi Mumbai, India</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Page - GameCrate</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+
+    .section-box {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    footer {
+      background-color: #111;
+      color: #bbb;
+      padding: 40px 20px;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark bg-opacity-75 px-4">
+  <a class="navbar-brand" href="index.html">
+    <img src="images/logo.png" alt="GameCrate" width="40" height="40" class="me-2"> GameCrate
+  </a>
+  <form class="d-flex me-3" action="search.html" method="GET">
+    <input id="searchInput" class="form-control form-control-sm me-2" type="search" placeholder="Search..." />
+    <button class="btn btn-outline-light btn-sm">Search</button>
+  </form>
+  <div class="d-flex align-items-center">
+    <select class="form-select form-select-sm me-3">
+      <option value="INR">₹ INR</option>
+      <option value="USD">$ USD</option>
+    </select>
+    <a href="cart.html" class="btn btn-outline-light me-2">Cart</a>
+    <a href="login.html" class="btn btn-outline-light me-2">Login</a>
+    <a href="register.html" class="btn btn-light">Register</a>
+  </div>
+</nav>
+
+<!-- Main Dashboard -->
+<div class="container my-5">
+  <h2 class="mb-4">Welcome, Commander!</h2>
+
+  <div class="section-box">
+    <h5>Your Library</h5>
+    <p>Recently played games:</p>
+    <ul>
+      <li>Marvel's Spider-Man 2</li>
+      <li>Elden Ring</li>
+      <li>Warhammer 40K: Space Marine</li>
+    </ul>
+    <a href="library.html" class="btn btn-sm btn-outline-light mt-2">View Full Library</a>
+  </div>
+
+  <div class="section-box">
+    <h5>Account Info</h5>
+    <p>Email: you@example.com</p>
+    <p>Membership: GameCrate Plus</p>
+    <button class="btn btn-sm btn-warning">Manage Subscription</button>
+  </div>
+
+  <div class="section-box">
+    <h5>Recent Activity</h5>
+    <ul>
+      <li>Left a review on “GTA V”</li>
+      <li>Purchased “Call of Duty: Modern Warfare II”</li>
+      <li>Added “DOOM: The Dark Ages” to wishlist</li>
+    </ul>
+  </div>
+
+  <div class="section-box">
+    <h5>Settings</h5>
+    <button class="btn btn-outline-secondary btn-sm">Edit Profile</button>
+    <button class="btn btn-outline-secondary btn-sm">Change Password</button>
+    <button class="btn btn-outline-danger btn-sm">Logout</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <div>
+      <h5>About GameCrate</h5>
+      <p>Your trusted platform for exploring and purchasing top-tier games across all platforms.</p>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <ul class="list-unstyled">
+        <li><a href="support.html">Support</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="library.html">Your Library</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <p>Email: support@gamecrate.com<br>Location: Navi Mumbai, India</p>
+    </div>
+  </div>
+</footer>
+<script>
+  document.querySelector('.navbar form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const query = document.getElementById('searchInput').value.trim();
+    if (query !== '') {
+      window.location.href = `store.html?search=${encodeURIComponent(query)}`;
+    }
+  });
+</script>
+
+</body>
+</html>
